@@ -24,6 +24,11 @@ int main(void)
     
     int change = cash - cost;
 
+    do {
+
+    } while (change > 0);    
+    
+
     if (change >= quarter)
     {
         if (change / quarter > 1)
