@@ -30,6 +30,7 @@ int main(void)
         {
             if (change % quarter != 0) {
                 printf("You have enough for%s\n", coins[7]);// STILL TO CORRECT
+                change = change % quarter;
             }
             else {
                 printf("You have enough for %d %s\n", change / quarter, coins[7]);
@@ -39,6 +40,7 @@ int main(void)
             /* code */
         } else {
             printf("You have enough for %d %s\n", oneCoin, coins[3]);
+            change = change % quarter;
         }
         
         printf("this lines prints as long as change is greater or equal than quarter\n");
@@ -49,25 +51,59 @@ int main(void)
         {
             if (change % dime != 0) {
                 printf("You have enough for%s\n", coins[6]);// STILL TO CORRECT
+                change = change % dime;
             }
             else {
                 printf("You have enough for %d %s\n", change / dime, coins[6]);
                 quarterCount = change / dime;
                 change = change % dime;
             }
-            /* code */
+            
         } else {
-            printf("You have enough for %d %s\n", oneCoin, coins[6]);
+            printf("You have enough for %d %s\n", oneCoin, coins[2]);
+            change = change % dime;
         }
-        /* code */
+        
     }
     else if (change >= nickel)
     {
-        /* code */
+        if (change / nickel > 1)
+        {
+            if (change % nickel != 0) {
+                printf("You have enough for%s\n", coins[5]);// STILL TO CORRECT
+                change = change % quarter;
+            }
+            else {
+                printf("You have enough for %d %s\n", change / nickel, coins[5]);
+                quarterCount = change / nickel;
+                change = change % nickel;
+            }
+            
+        } else {
+            printf("You have enough for %d %s\n", oneCoin, coins[1]);
+            change = change % nickel;
+        }
+        
     }
     else if (change >= penny)
     {
         /* code */
+        if (change / penny > 1)
+        {
+            if (change % penny != 0) {
+                printf("You have enough for%s\n", coins[4]);// STILL TO CORRECT
+                change = change % quarter;
+            }
+            else {
+                printf("You have enough for %d %s\n", change / penny, coins[4]);
+                quarterCount = change / penny;
+                change = change % penny;
+            }
+            
+        } else {
+            printf("You have enough for %d %s\n", oneCoin, coins[0]);
+            change = change % penny;
+        }
     }
     else if (change == 0)
     {
