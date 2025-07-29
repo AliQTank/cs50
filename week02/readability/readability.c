@@ -31,7 +31,7 @@ int main(void) {
         char c = text[i];
 
         // Count letters
-        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') ) {
+        if ((c >= 'a' && c <= 'z' ) || (c >= 'A' && c <= 'Z') ) {
             letters++;
         }
         
@@ -46,5 +46,6 @@ int main(void) {
         }            
     }
     printf("Length of text with spaces: %d\n", txtLength);
-    printf("Number of words: %d\n", words);    
+    printf("Number of words: %d\n", words);   
+    printf("Number of sentences: %d\n", sentences); //NOT WORKING
 }
