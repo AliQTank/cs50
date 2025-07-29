@@ -7,7 +7,6 @@
 int main(void) {
     bool inWord = false; // Flag to track if we are inside a word
     int letters = 0; // number of letters
-    int l; //avergae number of letters per 100 words
     int s; // average number of sentences per 100 words
     int sentences = 0; // number of sentences per 100 words
     int words = 0; // Total number of words   
@@ -17,8 +16,9 @@ int main(void) {
     // where L is the average number of letters per 100 words and S is the average number of sentences per 100 words.
     // The index is rounded to the nearest integer.
     // The index corresponds to a grade level, where 1 is first grade, 2 is second grade, and so on.
-    // If the index is less than 1, the text is suitable for a first grader
     // If the index is greater than 16, the text is suitable for a college graduate  
+    float wordsIndex = words / 100; // average number of words per 100 words, not
+    float lettersAv = letters / 100; //avergae number of letters per 100 words, not sure if this is needed
     float index = 0.0588 * letters - 0.296 * sentences - 15.8;
     int txtLength;
     string text;
@@ -36,6 +36,7 @@ int main(void) {
              text[0] == '\x0c' || text[0] == '\x0d' || text[txtLength - 1] == ' ') ;
         
     txtLength = strlen(text);
+    char prev = '\0';
     
     
     for (size_t i = 0; i < txtLength; i++)
@@ -61,9 +62,10 @@ int main(void) {
 
 
         // Count sentences
-        if (c == '.' || c == '!' || c == '?' || c == ';' || c == ':') {
+        if ((c == '.' || c == '!' || c == '?') && !(prev == '.' || prev == '!' || prev == '?'))
+        {
             sentences++;
-        }  
+        }
         
         // Count spaces
         if (c == ' ') {
@@ -79,5 +81,5 @@ int main(void) {
     printf("Number of letters: %d\n", letters);
     printf("Number of words: %d\n", words);   
     printf("Number of sentences: %d\n", sentences); // PARTIALLY WORKING, COMMAS DONT SEPARATE SENTENCES
-    printf("Grade: %i\n", (int)(0.0588 * letters / words * 100 - 0.296 * sentences / words * 100 - 15.8 + 0.5));
+    printf("WORDS INDEX: %.2f\n", wordsIndex);
 }
