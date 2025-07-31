@@ -3,6 +3,12 @@
 #include <string.h> // Library not included in the original code for string manipulation
 #include <ctype.h> // Library for character type functions, specifically added for isalpha function
 
+float wordsIndex(int words) { // index of 100 words proportion
+    return (float)words / 100.0;
+}  
+float lettersAv; // = letters / 100; //avergae number of letters per 100 words
+// float index; // = 0.0588 * letters - 0.296 * sentences - 15.8;
+
 
 int main(void) {
     bool inWord = false; // Flag to track if we are inside a word
@@ -17,9 +23,6 @@ int main(void) {
     // The index is rounded to the nearest integer.
     // The index corresponds to a grade level, where 1 is first grade, 2 is second grade, and so on.
     // If the index is greater than 16, the text is suitable for a college graduate  
-    float wordsIndex = words / 100; // average number of words per 100 words, not
-    float lettersAv = letters / 100; //avergae number of letters per 100 words, not sure if this is needed
-    float index = 0.0588 * letters - 0.296 * sentences - 15.8;
     int txtLength;
     string text;
 
@@ -81,5 +84,11 @@ int main(void) {
     printf("Number of letters: %d\n", letters);
     printf("Number of words: %d\n", words);   
     printf("Number of sentences: %d\n", sentences); // PARTIALLY WORKING, COMMAS DONT SEPARATE SENTENCES
-    printf("WORDS INDEX: %.2f\n", wordsIndex);
+    printf("WORDS INDEX: %.2f\n", wordsIndex(words));
+}
+
+
+
+float sentencesIndex(int sentences) {
+    return (float)sentences / 100.0;
 }
