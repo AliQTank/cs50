@@ -6,8 +6,20 @@
 float wordsIndex(int words) { // index of 100 words proportion
     return (float)words / 100.0;
 }  
-float lettersAv; // = letters / 100; //avergae number of letters per 100 words
+float lettersIndex(int letters, int words) { // index of 100 letters proportion
+    float thisIndx = wordsIndex(words);
+    return (float)(letters / thisIndx) * 100;
+} // = letters / 100; //average number of letters per 100 words
+float sentencesIndex(int sentences, int words) { // index of 100 sentences proportion
+    float thisIndx = wordsIndex(words);
+    return (float)(sentences / thisIndx) * 100;
+} // = letters / 100; //avergae number of letters per 100 words
 // float index; // = 0.0588 * letters - 0.296 * sentences - 15.8;
+float colemanLiauIndex(int letters, int sentences, int words) {
+    float L = lettersIndex(letters, words);
+    float S = sentencesIndex(sentences, words);
+    return 0.0588 * L - 0.296 * S - 15.8;
+} // Coleman-Liau index formula: index = 0.0588 * L - 0.296 * S - 15.8
 
 
 int main(void) {
@@ -85,10 +97,10 @@ int main(void) {
     printf("Number of words: %d\n", words);   
     printf("Number of sentences: %d\n", sentences); // PARTIALLY WORKING, COMMAS DONT SEPARATE SENTENCES
     printf("WORDS INDEX: %.2f\n", wordsIndex(words));
+    printf("SENTENCES INDEX: %.5f\n", sentencesIndex(sentences, words));
+    printf("Coleman-Liau index: %.2f\n", colemanLiauIndex(letters, sentences, words));
 }
 
 
 
-float sentencesIndex(int sentences) {
-    return (float)sentences / 100.0;
-}
+
