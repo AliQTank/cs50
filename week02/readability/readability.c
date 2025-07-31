@@ -7,12 +7,12 @@ float wordsIndex(int words) { // index of 100 words proportion
     return (float)words / 100.0;
 }  
 float lettersIndex(int letters, int words) { // index of 100 letters proportion
-    float thisIndx = wordsIndex(words);
-    return (float)(letters / thisIndx) * 100;
+    // float thisIndx = wordsIndex(words);
+    return ((float)letters / words) * 100;
 } // = letters / 100; //average number of letters per 100 words
 float sentencesIndex(int sentences, int words) { // index of 100 sentences proportion
-    float thisIndx = wordsIndex(words);
-    return (float)(sentences / thisIndx) * 100;
+  //  float thisIndx = wordsIndex(words);
+    return ((float)sentences / words) * 100;
 } // = letters / 100; //avergae number of letters per 100 words
 // float index; // = 0.0588 * letters - 0.296 * sentences - 15.8;
 float colemanLiauIndex(int letters, int sentences, int words) {
@@ -48,7 +48,7 @@ int main(void) {
              text[0] == '\f' || text[0] == '\a' || text[0] == '\b' || text[0] == '\e' ||
              text[0] == '\f' || text[0] == '\v' || text[0] == '\0' || text[0] == '\x00' ||
              text[0] == '\x20' || text[0] == '\x09' || text[0] == '\x0a' || text[0] == '\x0b' ||
-             text[0] == '\x0c' || text[0] == '\x0d' || text[txtLength - 1] == ' ') ;
+             text[0] == '\x0c' || text[0] == '\x0d');
         
     txtLength = strlen(text);
     char prev = '\0';
@@ -64,7 +64,8 @@ int main(void) {
         }
         
         // Count words
-         if (isalpha(text[i])) {
+        
+        if (isalpha(c) || c == '\'' || c == '-') {
             if (!inWord) {
                 inWord = true;
                 words++;
@@ -74,6 +75,7 @@ int main(void) {
             {
                 inWord = false;
             }
+
 
 
         // Count sentences
@@ -99,6 +101,19 @@ int main(void) {
     printf("WORDS INDEX: %.2f\n", wordsIndex(words));
     printf("SENTENCES INDEX: %.5f\n", sentencesIndex(sentences, words));
     printf("Coleman-Liau index: %.2f\n", colemanLiauIndex(letters, sentences, words));
+
+    if (colemanLiauIndex(letters, sentences, words) < 1)
+    {
+        printf("Grade: Before Grade 1\n");
+    }
+    else if (colemanLiauIndex(letters, sentences, words) > 16)
+    {
+        printf("Grade: 16+\n");
+    }
+    else
+    {
+        printf("Grade: %d\n", (int)(colemanLiauIndex(letters, sentences, words) + 0.5));
+    }
 }
 
 
