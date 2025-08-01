@@ -82,6 +82,8 @@ int main(int argc, string argv[])
     // printf("remainder: %d\n", remainder);
     // printf("plaintext: %s\n", plainText);
     onlyDigits(key);
+    int keyNumber = atoi(key);
+    printf("keyNumber: %d\n", keyNumber);
 
 };
 
