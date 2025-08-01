@@ -70,7 +70,10 @@ int main(int argc, string argv[])
         return 1;
     }
     // argv[1][0] = tolower(argv[1][0]);
+    string plaintext = get_string("plaintext: ");
     string key = argv[1];
+    int keyNumber = atoi(key);
+    int remainder = keyNumber % totalLetters;
 
     printf("argc: %d\n", argc);
     printf("argv[0]: %s\n", argv[0]);
@@ -82,8 +85,9 @@ int main(int argc, string argv[])
     // printf("remainder: %d\n", remainder);
     // printf("plaintext: %s\n", plainText);
     onlyDigits(key);
-    int keyNumber = atoi(key);
     printf("keyNumber: %d\n", keyNumber);
+    printf("remainder: %d\n", remainder);
+    printf("plaintext: %s\n", plaintext);
 
 };
 
