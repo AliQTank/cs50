@@ -2,8 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <cs50.h>
+#include <inttypes.h>
+#include <ctype.h>
+#include <stdint.h>
 
-int const reminder = 26; 
+int const totalLetters = 26; 
 
 int const abecedarian[] = {
     0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68,
@@ -21,9 +24,29 @@ int const abecedary[] = {
 
 const char *abecedaryArray = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-int main(void)
+int main(int argc, string argv[])
 {
-    string plainText = get_string("plaintext: ");
-    printf("plaintext: %s\n", plainText);
+    if (argc != 2)
+    {
+        printf("Usage: ./caesar key\n");
+        return 1;
+    }
+    else if (argv[1] == NULL || !isdigit(argv[1][0]))
+    {
+        /* code */
+        printf("Usage: ./caesar key\n");
+        return 1;
+    }
+    int key = argv[1];
+
+    printf("argc: %d\n", argc);
+    printf("argv[0]: %s\n", argv[0]);
+    printf("argv[1]: %d\n", key);    
+
+    // int key2 = strtoimax(argv[1], NULL, 10);
+    // int remainder = key % totalLetters;
+    // string plainText = get_string("plaintext: ");
+    // printf("remainder: %d\n", remainder);
+    // printf("plaintext: %s\n", plainText);
 
 };
