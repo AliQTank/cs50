@@ -92,8 +92,10 @@ int onlyDigits(string zeroToNine)
     {
         if (!isdigit(zeroToNine[i]))
         {
+            printf("Not all characters are digits.\n");
             return 1; // Not all characters are digits
         }
     }
+    printf("All characters are digits.\n");
     return 0; // All characters are digits
 }
