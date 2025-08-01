@@ -81,17 +81,19 @@ int main(int argc, string argv[])
     // string plainText = get_string("plaintext: ");
     // printf("remainder: %d\n", remainder);
     // printf("plaintext: %s\n", plainText);
+    onlyDigits(key);
 
 };
 
 int onlyDigits(string zeroToNine)
 {
-    for (int i = 0, n = strlen(zeroToNine); i < n; i++)
+    int length = strlen(zeroToNine);
+    for (int i = 0, n = length; i < n; i++)
     {
         if (!isdigit(zeroToNine[i]))
         {
-            return 0; // Not all characters are digits
+            return 1; // Not all characters are digits
         }
     }
-    return 1; // All characters are digits
+    return 0; // All characters are digits
 }
