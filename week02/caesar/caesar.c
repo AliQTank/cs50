@@ -8,6 +8,14 @@
 
 int const totalLetters = 26; 
 int onlyDigits(string zeroToNine);
+// This is an array of integers representing the ASCII values of the lowercase letters a-z.
+// Each integer corresponds to a letter in the alphabet, starting from 'a' (0x61) to 'z' (0x7A).
+// This array can be used for various purposes, such as checking if a character is a lowercase letter or
+// for creating a cipher like the Caesar cipher.
+// Note: The integers are in hexadecimal format, which is a base-16 numbering system.
+// The values can be used directly in comparisons or calculations involving lowercase letters.
+// The array is defined as a constant, meaning its contents cannot be changed after initialization.
+// It is suitable for use in contexts where you need to check if a character is a lowercase letter.
 int const abecedarian[] = {
     0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68,
     0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e, 0x6f, 0x70,
@@ -15,6 +23,14 @@ int const abecedarian[] = {
     0x79, 0x7a
 };
 
+// This is an array of integers representing the ASCII values of the uppercase letters A-Z.
+// Each integer corresponds to a letter in the alphabet, starting from 'A' (0x41) to 'Z' (0x5A).
+// This array can be used for various purposes, such as checking if a character is an uppercase letter or
+// for creating a cipher like the Caesar cipher.
+// Note: The integers are in hexadecimal format, which is a base-16 numbering system.
+// The values can be used directly in comparisons or calculations involving uppercase letters.
+// The array is defined as a constant, meaning its contents cannot be changed after initialization.
+// It is suitable for use in contexts where you need to check if a character is an uppercase letter.
 int const abecedary[] = {
     0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48,
     0x49, 0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f, 0x50,
@@ -22,7 +38,22 @@ int const abecedary[] = {
     0x59, 0x5a
 };
 
+// This is a string containing all the letters of the alphabet in both lowercase and uppercase.
+// It can be used for various purposes, such as checking if a character is a letter or
+// for creating a cipher like the Caesar cipher.
+// Note: The string is null-terminated, which means it ends with a '\0'
+// This is a string literal, which is stored in read-only memory.
+// It is not modifiable, so you cannot change the contents of this string.
+// If you need a modifiable version, you can use a character array instead.
+// It is suitable for use in contexts where you need to check if a character is a letter.
 const char *abecedaryArray = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+// This is a character array containing all the letters of the alphabet in both lowercase and uppercase.
+// It can be modified if needed, unlike the string literal above.
+// Note: This array is not null-terminated, so it does not end with a '\0'.
+// It is suitable for use in contexts where you need to modify the contents.
+// This array is useful for operations that require a fixed-size array of characters.
+// It can be used for various purposes, such as checking if a character is a letter or
+// for creating a cipher like the Caesar cipher.
 char abecedaryArray2[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 int main(int argc, string argv[])
