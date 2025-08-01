@@ -23,6 +23,7 @@ int const abecedary[] = {
 };
 
 const char *abecedaryArray = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+char abecedaryArray2[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 int main(int argc, string argv[])
 {
