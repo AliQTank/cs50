@@ -7,7 +7,7 @@
 #include <stdint.h>
 
 int const totalLetters = 26; 
-int onlyDigits(string zeroToNine);
+bool onlyDigits(string zeroToNine);
 // This is an array of integers representing the ASCII values of the lowercase letters a-z.
 // Each integer corresponds to a letter in the alphabet, starting from 'a' (0x61) to 'z' (0x7A).
 // This array can be used for various purposes, such as checking if a character is a lowercase letter or
@@ -71,9 +71,12 @@ int main(int argc, string argv[])
     }
     // argv[1][0] = tolower(argv[1][0]);
     string plaintext = get_string("plaintext: ");
+    char *plaintext2 = plaintext; // Create a pointer to the plaintext string
     string key = argv[1];
     int keyNumber = atoi(key);
     int remainder = keyNumber % totalLetters;
+
+    for (int i = 0, n = strlen(plaintext); i < n; i++) {}
 
     printf("argc: %d\n", argc);
     printf("argv[0]: %s\n", argv[0]);
@@ -87,21 +90,18 @@ int main(int argc, string argv[])
     onlyDigits(key);
     printf("keyNumber: %d\n", keyNumber);
     printf("remainder: %d\n", remainder);
-    printf("plaintext: %s\n", plaintext);
-
 };
 
-int onlyDigits(string zeroToNine)
+bool onlyDigits(string zeroToNine)
 {
     int length = strlen(zeroToNine);
     for (int i = 0, n = length; i < n; i++)
     {
         if (!isdigit(zeroToNine[i]))
-        {
-            printf("Not all characters are digits.\n");
-            return 1; // Not all characters are digits
+        {            
+            printf("Usage: ./caesar key\n");
+            return false;
         }
-    }
-    printf("All characters are digits.\n");
-    return 0; // All characters are digits
+    }    
+    return true;
 }
