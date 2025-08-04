@@ -7,7 +7,7 @@
 #include <stdint.h>
 
 int const totalLetters = 26; 
-bool onlyDigits(string zeroToNine);
+bool onlyDigits(string keyNumber);
 // This is an array of integers representing the ASCII values of the lowercase letters a-z.
 // Each integer corresponds to a letter in the alphabet, starting from 'a' (0x61) to 'z' (0x7A).
 // This array can be used for various purposes, such as checking if a character is a lowercase letter or
@@ -70,13 +70,34 @@ int main(int argc, string argv[])
         return 1;
     }
     // argv[1][0] = tolower(argv[1][0]);
-    string plaintext = get_string("plaintext: ");
-    char *plaintext2 = plaintext; // Create a pointer to the plaintext string
     string key = argv[1];
+    string plaintext = get_string("plaintext: ");
+    int textLength = strlen(plaintext);
+    char *plaintext2 = plaintext; // Create a pointer to the plaintext string
     int keyNumber = atoi(key);
     int remainder = keyNumber % totalLetters;
+    char ciphertext[5000]; // Assuming a maximum length of 5000 for ciphertext
 
-    for (int i = 0, n = strlen(plaintext); i < n; i++) {}
+    // Initialize the ciphertext array with null characters
+    memset(ciphertext, '\0', sizeof(ciphertext));
+
+    for (int i = 0, n = textLength; i < n; i++) {
+        // Check if the character is a lowercase letter
+        if (islower(plaintext[i])) {
+            // Calculate the new character using the Caesar cipher formula
+            ciphertext[i] = (plaintext[i] - 'a' + remainder) % totalLetters + 'a';
+        }
+        // Check if the character is an uppercase letter
+        else if (isupper(plaintext[i])) {
+            // Calculate the new character using the Caesar cipher formula
+            ciphertext[i] = (plaintext[i] - 'A' + remainder) % totalLetters + 'A';
+        }
+        // If the character is not a letter, keep it unchanged
+        else {
+            ciphertext[i] = plaintext[i];
+        }
+
+    }
 
     printf("argc: %d\n", argc);
     printf("argv[0]: %s\n", argv[0]);
@@ -86,18 +107,18 @@ int main(int argc, string argv[])
     // int remainder = key % totalLetters;
     // string plainText = get_string("plaintext: ");
     // printf("remainder: %d\n", remainder);
-    // printf("plaintext: %s\n", plainText);
+    printf("ciphertext: %s\n", ciphertext);
     onlyDigits(key);
     printf("keyNumber: %d\n", keyNumber);
     printf("remainder: %d\n", remainder);
 };
 
-bool onlyDigits(string zeroToNine)
+bool onlyDigits(string keyNumber)
 {
-    int length = strlen(zeroToNine);
+    int length = strlen(keyNumber);
     for (int i = 0, n = length; i < n; i++)
     {
-        if (!isdigit(zeroToNine[i]))
+        if (!isdigit(keyNumber[i]))
         {            
             printf("Usage: ./caesar key\n");
             return false;
