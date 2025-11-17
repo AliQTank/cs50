@@ -1,4 +1,4 @@
-sort1 uses: SELECTION SORT
+sort1 uses: BUBBLE SORT
 random5000 : 0.086
 random10000 : 0.306
 random50000 : 6.851
@@ -28,7 +28,7 @@ sorted50000 : 0.119
 
 How do you know?: it uses a recursion approach, slicing the problem into smaller pieces, most efficient with bigger data
 
-sort3 uses: BUBBLE SORT
+sort3 uses: SELECTION SORT
 random5000 : 0.037
 random10000 : 0.151
 random50000 : 2.541
@@ -42,3 +42,9 @@ sorted10000 : 0.127
 sorted50000 : 2.574
 
 How do you know?: O similar to SELECTION SORT, however the bigger the data 
+
+
+
+SELECTION SORT O(n square) omega(n square)
+BUBBLE SORT    O(n square) omega(n)
+MERGE SORT     O(n log n)  omega(n log n) 
