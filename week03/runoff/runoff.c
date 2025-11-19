@@ -1,5 +1,6 @@
 #include <cs50.h>
 #include <stdio.h>
+#include <string.h>
 
 // Max voters and candidates
 #define MAX_VOTERS 100
@@ -127,6 +128,21 @@ int main(int argc, string argv[])
 bool vote(int voter, int rank, string name)
 {
     // TODO
+    if (strcmp(name, candidates[0].name) == 0)
+    {
+        preferences[voter][rank] = 0;
+        return true;
+    }
+    else if (strcmp(name, candidates[1].name) == 0)
+    {
+        preferences[voter][rank] = 1;
+        return true;
+    }
+    else if (strcmp(name, candidates[2].name) == 0)
+    {
+        preferences[voter][rank] = 2;
+        return true;
+    }
     return false;
 }
 
@@ -134,6 +150,18 @@ bool vote(int voter, int rank, string name)
 void tabulate(void)
 {
     // TODO
+    for (int i = 0; i < voter_count; i++)
+    {
+        for (int j = 0; j < candidate_count; j++)
+        {
+            int candidate_index = preferences[i][j];
+            if (!candidates[candidate_index].eliminated)
+            {
+                candidates[candidate_index].votes++;
+                break;
+            }
+        }
+    }
     return;
 }
 
@@ -141,6 +169,21 @@ void tabulate(void)
 bool print_winner(void)
 {
     // TODO
+    if (candidates[0].votes > voter_count / 2)
+    {
+        printf("%s\n", candidates[0].name);
+        return true;
+    }
+    else if (candidates[1].votes > voter_count / 2)
+    {
+        printf("%s\n", candidates[1].name);
+        return true;
+    }
+    else if (candidates[2].votes > voter_count / 2)
+    {
+        printf("%s\n", candidates[2].name);
+        return true;
+    }
     return false;
 }
 
@@ -148,6 +191,7 @@ bool print_winner(void)
 int find_min(void)
 {
     // TODO
+    
     return 0;
 }
 
